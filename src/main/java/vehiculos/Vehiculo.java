@@ -5,28 +5,37 @@ public class Vehiculo {
     protected int puertas;
     protected int velocidadMaxima;
     protected String nombre;
-    protected int precio;
-    protected int peso;
+    protected double precio;
+    protected double peso;
     protected String traccion;
     protected Fabricante fabricante;
 
-    private static int cantidadVehiculos = 0;
-    private static int cantidadAutomoviles = 0;
-    private static int cantidadCamionetas = 0;
-    private static int cantidadCamiones = 0;
+    protected static int cantidadVehiculos = 0;
+    protected static int cantidadAutomoviles = 0;
+    protected static int cantidadCamionetas = 0;
+    protected static int cantidadCamiones = 0;
 
-    public Vehiculo(String placa, int puertas, String nombre, int precio, int peso, String traccion, Fabricante fabricante) {
+    public Vehiculo(String placa, int puertas, int velocidadMaxima, String nombre, double precio, double peso, String traccion, Fabricante fabricante) {
         this.placa = placa;
         this.puertas = puertas;
+        this.velocidadMaxima = velocidadMaxima;
         this.nombre = nombre;
         this.precio = precio;
         this.peso = peso;
         this.traccion = traccion;
         this.fabricante = fabricante;
+
         cantidadVehiculos++;
+        Pais.registrarVenta(fabricante.getPais());
+        Fabricante.registrarVenta(fabricante);
     }
 
-    
+    public static String vehiculosPorTipo() {
+        return "Automoviles: " + cantidadAutomoviles +
+               "\nCamionetas: " + cantidadCamionetas +
+               "\nCamiones: " + cantidadCamiones;
+    }
+
     public String getPlaca() {
         return placa;
     }
@@ -59,19 +68,19 @@ public class Vehiculo {
         this.nombre = nombre;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
-    public int getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
@@ -89,23 +98,5 @@ public class Vehiculo {
 
     public void setFabricante(Fabricante fabricante) {
         this.fabricante = fabricante;
-    }
-
-    public static String vehiculosPorTipo() {
-        return "Automoviles: " + cantidadAutomoviles + "\n" +
-               "Camionetas: " + cantidadCamionetas + "\n" +
-               "Camiones: " + cantidadCamiones;
-    }
-
-    public static void incrementarAutomoviles() {
-        cantidadAutomoviles++;
-    }
-
-    public static void incrementarCamionetas() {
-        cantidadCamionetas++;
-    }
-
-    public static void incrementarCamiones() {
-        cantidadCamiones++;
     }
 }
