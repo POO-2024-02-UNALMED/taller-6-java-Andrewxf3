@@ -36,6 +36,14 @@ public class Vehiculo {
                "\nCamiones: " + cantidadCamiones;
     }
 
+    public static int getCantidadVehiculos() {
+        return cantidadVehiculos;
+    }
+
+    public static void setCantidadVehiculos(int cantidadVehiculos) {
+        Vehiculo.cantidadVehiculos = cantidadVehiculos;
+    }
+
     public String getPlaca() {
         return placa;
     }
@@ -100,3 +108,4 @@ public class Vehiculo {
         this.fabricante = fabricante;
     }
 }
+
